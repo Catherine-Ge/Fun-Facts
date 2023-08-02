@@ -43,15 +43,15 @@ const CATEGORIES = [
   { name: "news", color: "#8b5cf6" },
 ];
 
-// Select DOM elements
+// Selecting DOM elements
 const btn = document.querySelector(".btn-open");
 const form = document.querySelector(".fact-form");
 const factsList = document.querySelector(".facts-list");
 
-// DOM elements: render facts in list
+// Create DOM elements: Render facts in list
 factsList.innerHTML = "";
 
-// Load data
+// Load data from Supabase
 loadFacts();
 
 async function loadFacts() {
@@ -67,30 +67,31 @@ async function loadFacts() {
     }
   );
   const data = await res.json();
+
   createFactsList(data);
 }
-
-//createFactsList(initialFacts);
 
 function createFactsList(dataArray) {
   const htmlArr = dataArray.map(
     (fact) => `<li class="fact">
-    <p>
-    ${fact.text}
-      <a
-        class="source"
-        href="${fact.source}"
-       target="_blank"
-      >(Source)</a>
-    </p>
-    <span class="tag" style="background-color: #3b82f6">${fact.category}</span>
+      <p>
+      ${fact.text}
+        <a
+          class="source"
+          href="${fact.source}"
+          target="_blank"
+        >(Source)</a>
+      </p>
+      <span class="tag" style="background-color: ${
+        CATEGORIES.find((cat) => cat.name === fact.category).color
+      }">${fact.category}</span>
     </li>`
   );
-  console.log(htmlArr);
   const html = htmlArr.join("");
   factsList.insertAdjacentHTML("afterbegin", html);
 }
 
+// Toggle form visibility
 btn.addEventListener("click", function () {
   if (form.classList.contains("hidden")) {
     form.classList.remove("hidden");
