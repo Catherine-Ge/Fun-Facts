@@ -43,12 +43,34 @@ const CATEGORIES = [
   { name: "news", color: "#8b5cf6" },
 ];
 
+// Select DOM elements
 const btn = document.querySelector(".btn-open");
 const form = document.querySelector(".fact-form");
 const factsList = document.querySelector(".facts-list");
 
+// DOM elements: render facts in list
 factsList.innerHTML = "";
-createFactsList(initialFacts);
+
+// Load data
+loadFacts();
+
+async function loadFacts() {
+  const res = await fetch(
+    "https://gqrxegrbktihlbxkvapu.supabase.co/rest/v1/facts",
+    {
+      headers: {
+        apikey:
+          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdxcnhlZ3Jia3RpaGxieGt2YXB1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2OTA0Njk0ODcsImV4cCI6MjAwNjA0NTQ4N30.SCprb9SwXyVKF-J_38JHK8SdS3RVacGWv9f2CN3nQ8k",
+        authorization:
+          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdxcnhlZ3Jia3RpaGxieGt2YXB1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2OTA0Njk0ODcsImV4cCI6MjAwNjA0NTQ4N30.SCprb9SwXyVKF-J_38JHK8SdS3RVacGWv9f2CN3nQ8k",
+      },
+    }
+  );
+  const data = await res.json();
+  createFactsList(data);
+}
+
+//createFactsList(initialFacts);
 
 function createFactsList(dataArray) {
   const htmlArr = dataArray.map(
