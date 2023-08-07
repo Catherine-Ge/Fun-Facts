@@ -6,5 +6,7 @@ It is deployed with GitHub pages: https://catherine-ge.github.io/Fun-Facts/
 
 Here is a demo video of the website.
 
-https://github.com/Catherine-Ge/Fun-Facts/assets/95162919/548f80c5-22cd-4bd0-9263-f82232953108
+
+
+https://github.com/Catherine-Ge/Fun-Facts/assets/95162919/fa1b1984-0b99-4f61-9da9-a5d41530520f
 
