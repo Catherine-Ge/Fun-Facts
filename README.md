@@ -1,6 +1,6 @@
 This is a website where users can share a fact they learned with the world and vote on all the other facts.
 
-I used HTML, CSS, Javascript React, and Node.js. I also used Supabase as the database.
+This website is built with Typescript, React, Node.js and Supabase.
 
 It is deployed with GitHub pages: https://catherine-ge.github.io/Fun-Facts/
 
